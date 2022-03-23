@@ -7,6 +7,10 @@
 //test.remove();
 //--------------XXXXXX--------------------
 let total = prompt("Please enter the size of matrix", 16);
+while (total<2 || total>100) {
+  total = prompt("Please enter the size of matrix between 2 and 100", 16);
+  
+}
 const board = document.querySelector('.board');
 let clickedErase = 0, clickedColor = 1, clickedRainbow = 0;
 let i = 0;

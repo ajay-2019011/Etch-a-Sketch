@@ -12,13 +12,11 @@ div.board{
 .in{
   display:flex;
   flex:1;
-  background-color: blue;
-  border-radius: 4px;
+  background-color: white;
 }
 
 .into{
   display:flex;
   flex:1;
-  background-color: brown;
-  border-radius: 4px;
+  background-color: white;
 }

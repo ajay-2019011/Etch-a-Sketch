@@ -1,22 +1,51 @@
-div.board{
+body{
+  display:flex;
+  flex-direction: column;
+}
+.header{
+  text-align: center;
+}
+.container{
+  display: flex;
+  margin: 10px auto;
+  height: 710px;
+  width: 710px;
+  padding: 5px;
+  background-color: darkgrey;
+}
+.board{
   display: flex;
   flex-direction: column;
   /* flex-wrap; wrap */
-  width: 800px;
-  height: 800px;
-  background-color: white;
+  width: 700px;
+  height: 700px;
+  background-color: black;
   border-width: 4px;
   border-color: black;
-  margin: 80px auto;
+  margin: auto;
 }
 .in{
   display:flex;
   flex:1;
-  background-color: white;
+  background-color: black;
 }
-
 .into{
   display:flex;
   flex:1;
-  background-color: white;
+  background-color: black;
+}
+.buttons{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:40px;
+}
+.btn{
+  font-size:26px;
+  border-radius: 10px;
+  width:180px;
+  height: 65px;
+  padding: 10px;
+  font-weight: bolder;
 }

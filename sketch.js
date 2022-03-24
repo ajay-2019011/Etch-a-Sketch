@@ -12,7 +12,7 @@ while (total<2 || total>100) {
   
 }
 const board = document.querySelector('.board');
-let clickedErase = 0, clickedDraw = 0, clickedRainbow = 0,blackBoard=1,whiteBoard=0;
+let clickedErase = 0, clickedDraw = 0, clickedRainbow = 0,blackBoard=1,whiteBoard=0,keepDesign=0;
 let i = 0;
 let wide = 800 / total;
 
@@ -38,6 +38,9 @@ draw.addEventListener('click', drawIt);
 
 const rainbow = document.querySelector('#rainbow');
 rainbow.addEventListener('click', rainbowIt);
+
+const keep = document.querySelector('#keep');
+keep.addEventListener('click', keepIt);
 
 
 function blackOn(e) {
@@ -79,6 +82,12 @@ function clearIt(e) {
   clickedErase = 0;
   clickedRainbow = 0;
   clearing();
+}
+
+function keepIt(e) {
+  keepDesign = 1;
+  clearing();
+  keepDesign = 0;
 }
 
 function check(val) {
@@ -139,10 +148,18 @@ function clearing() {
   inDivs.forEach((insideDivs) => {
     const leafDivs = insideDivs.querySelectorAll(".into");
     leafDivs.forEach((leaf) => {
-      if(check(4))
-        leaf.style.backgroundColor = "black";
-      else if (check(3))
-        leaf.style.backgroundColor = "white";
+      if (keepDesign == 0) {
+        if (check(4))
+          leaf.style.backgroundColor = "black";
+        else if (check(3))
+          leaf.style.backgroundColor = "white";
+      }
+      else if (keepDesign == 1) {
+        if (leaf.style.backgroundColor == "black")
+          leaf.style.backgroundColor = "white";
+        else if (leaf.style.backgroundColor == "white")
+          leaf.style.backgroundColor = "black";
+      }
     });
   });
 }

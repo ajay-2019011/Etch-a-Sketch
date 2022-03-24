@@ -36,6 +36,8 @@ body{
 }
 .buttons{
   margin-top: 20px;
+  margin-left: 350px;
+  margin-right: 350px; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,4 +50,7 @@ body{
   height: 65px;
   padding: 10px;
   font-weight: bolder;
+}
+#keep{
+  width: 720px;
 }

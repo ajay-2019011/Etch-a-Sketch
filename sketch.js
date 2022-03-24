@@ -12,7 +12,7 @@ while (total<2 || total>100) {
   
 }
 const board = document.querySelector('.board');
-let clickedErase = 0, clickedDraw = 0, clickedRainbow = 0;
+let clickedErase = 0, clickedDraw = 0, clickedRainbow = 0,blackBoard=1,whiteBoard=0;
 let i = 0;
 let wide = 800 / total;
 
@@ -24,6 +24,12 @@ function randomColor() {
   return values[randomInt];
 }
 
+const blackB = document.querySelector('#blackB');
+blackB.addEventListener('click', blackOn);
+
+const whiteB = document.querySelector('#whiteB');
+whiteB.addEventListener('click', whiteOn);
+
 const erase = document.querySelector('#erase');
 erase.addEventListener('click', eraseIt);
 
@@ -33,6 +39,18 @@ draw.addEventListener('click', drawIt);
 const rainbow = document.querySelector('#rainbow');
 rainbow.addEventListener('click', rainbowIt);
 
+
+function blackOn(e) {
+  blackBoard = 1;
+  whiteBoard = 0;
+  clearing();
+}
+
+function whiteOn(e) {
+  whiteBoard = 1;
+  blackBoard = 0;
+  clearing();
+}
 
 function eraseIt(e) {
   clickedErase = 1;
@@ -73,6 +91,12 @@ function check(val) {
   else if (val == 2) {
     return clickedRainbow;
   }
+  else if (val == 3) {
+    return whiteBoard;
+  }
+  else if (val == 4) {
+    return blackBoard;
+  }
 }
 
 for (i = 0; i < total; i++) {
@@ -87,10 +111,18 @@ inElements.forEach((inElement) => {
     let ele = document.createElement('div');
     ele.classList.add("into");
     ele.addEventListener('mouseover', () => {
-      if (check(0))
-        ele.style.backgroundColor = "black";
-      else if (check(1))
-        ele.style.backgroundColor = "white";
+      if (check(0)) {
+        if(check(4))
+          ele.style.backgroundColor = "black";
+        else if (check(3))
+          ele.style.backgroundColor = "white";
+      }
+      else if (check(1)) {
+        if(check(4))
+          ele.style.backgroundColor = "white";
+        else if (check(3))
+          ele.style.backgroundColor = "black";
+      }
       else if (check(2))
         ele.style.backgroundColor = randomColor();
     });
@@ -107,7 +139,10 @@ function clearing() {
   inDivs.forEach((insideDivs) => {
     const leafDivs = insideDivs.querySelectorAll(".into");
     leafDivs.forEach((leaf) => {
-      leaf.style.backgroundColor = "black";
+      if(check(4))
+        leaf.style.backgroundColor = "black";
+      else if (check(3))
+        leaf.style.backgroundColor = "white";
     });
   });
 }
